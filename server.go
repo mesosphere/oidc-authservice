@@ -121,9 +121,8 @@ func (s *server) authenticate(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 			// TODO: Move this to the web server and make it prettier
-			msg := fmt.Sprintf("User '%s' failed authorization with reason: %s. "+
-				"Click <a href='%s'> here</a> to login again.", userInfo.GetName(),
-				reason, s.homepageURL)
+			msg := fmt.Sprintf("Authorization failed. "+
+				"Click <a href='%s'> here</a> to login again.", s.homepageURL)
 
 			returnHTML(w, http.StatusForbidden, msg)
 			return
